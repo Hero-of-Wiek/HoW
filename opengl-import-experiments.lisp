@@ -36,3 +36,23 @@
                (render-cube -10 -10 0 5 :quads)
                (gl:flush)
                (sdl:update-display))))))
+
+
+(defun parse-points (string)
+  "Parse a list of .x3d points into a list of vectors.
+
+Our result is something like (list #(1 2 3) #(3.4 3.4 4.5))"
+  (declare (string string))
+  (mapcar (lambda (vect)
+            (apply #'vector
+                   (mapcar #'read-from-string
+                           (split-sequence:split-sequence
+                            #\Space vect :remove-empty-subseqs t))))
+          (remove " "
+                  (split-sequence:split-sequence #\, string :remove-empty-subseqs t)
+                  :test #'string=)))
+
+
+
+
+
