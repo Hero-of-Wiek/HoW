@@ -12,4 +12,6 @@
              (:file "health" :depends-on ("sprite"))
              (:file "actor" :depends-on ("health"))))
    (:file "simple-sdl-init" :depends-on (#:src))
-   (:file "hearts-sdl-init" :depends-on (#:src))))
+   (:file "hearts-sdl-init" :depends-on (#:src))
+   (:file "3d-experiments" :depends-on (#:src))
+   (:file "opengl-import-experiments" :depends-on ("3d-experiments"))))
