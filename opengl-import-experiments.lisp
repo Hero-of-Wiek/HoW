@@ -44,15 +44,13 @@
 Our result is something like (list #(1 2 3) #(3.4 3.4 4.5))"
   (declare (string string))
   (mapcar (lambda (vect)
-            (apply #'vector
-                   (mapcar #'read-from-string
-                           (split-sequence:split-sequence
-                            #\Space vect :remove-empty-subseqs t))))
+            (mapcar #'read-from-string
+                    (split-sequence:split-sequence
+                     #\Space vect :remove-empty-subseqs t)))
           (remove " "
                   (split-sequence:split-sequence #\, string :remove-empty-subseqs t)
                   :test #'string=)))
 
 
-
-
+(defparameter *source* (cxml:parse-file "/home/james/blender25/.x3d" (cxml-dom:make-dom-builder)))
 
