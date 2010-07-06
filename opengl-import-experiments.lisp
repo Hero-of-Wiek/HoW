@@ -71,6 +71,13 @@
                      components))
       (gl:glaref gl-vector index)))
 
+(defun (setf get-array) (item gl-vector &optional (index 0) components)
+  (if components
+      (loop for element across item
+         for component in components
+         do (setf (gl:glaref gl-vector index component) element))
+      (setf (gl:glaref gl-vector index) item)))
+
 (defun getverts (gl-array &optional (count (gl::gl-array-size gl-array)))
   (loop for i from 0 to (1- count)
      collect (getvert gl-array i)))
