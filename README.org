@@ -28,7 +28,7 @@
   - Get cl-opengl: =(asdf-install:install :cl-opengl)=
   - Get cl-glu: =(asdf-install:install :cl-glu)=
   - cd: =cd ~/lisp/=
-  - Clone: =git clone git://github.com/nixeagle/HoW.git=
+  - Clone: =git clone git://github.com/Hero-of-Wiek/HoW.git=
   - Clone nutils: =git clone git://github.com/nixeagle/nutils.git=
   - symlink: =cd asdf && ln -s ../HoW/how.asd .=
   - symlink nutils: =ln -s ../nutils/nutils.asd .=
