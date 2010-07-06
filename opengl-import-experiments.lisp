@@ -82,6 +82,10 @@ Our result is something like (list #(1 2 3) #(3.4 3.4 4.5))"
                   (split-sequence:split-sequence #\, string :remove-empty-subseqs t)
                   :test #'string=)))
 
+#+ () (defparameter *source* (cxml:parse-file "/home/james/blender25/.x3d" (cxml-dom:make-dom-builder)))
 
-(defparameter *source* (cxml:parse-file "/home/james/blender25/.x3d" (cxml-dom:make-dom-builder)))
+
+
+
+
 
