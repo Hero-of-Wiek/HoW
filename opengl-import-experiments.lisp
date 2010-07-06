@@ -63,6 +63,14 @@
         (gl:glaref gl-vector index 'y) (aref vector 1)
         (gl:glaref gl-vector index 'z) (aref vector 2)))
 
+(defun get-array (gl-vector &optional (index 0) components)
+  (if components
+      (apply #'vector
+             (mapcar (lambda (component)
+                       (gl:glaref gl-vector index component))
+                     components))
+      (gl:glaref gl-vector index)))
+
 (defun getverts (gl-array &optional (count (gl::gl-array-size gl-array)))
   (loop for i from 0 to (1- count)
      collect (getvert gl-array i)))
