@@ -82,8 +82,7 @@
   (loop for i from 0 to (1- count)
      collect (getvert gl-array i)))
 
-(defun get-arrays (gl-array &optional (count (gl::gl-array-size gl-array))
-                   components)
+(defun get-arrays (gl-array &optional components (count (gl::gl-array-size gl-array)))
   (loop for i from 0 to (1- count)
        collect (get-array gl-array i components)))
 
@@ -93,6 +92,13 @@
   (loop for vector in vectors
      for i from 0
      do (setf (getvert gl-array i) vector)))
+
+(defun (setf get-arrays) (vectors gl-array
+                          &optional components (count (gl::gl-array-size gl-array)))
+  (assert (<= (length vectors) count) () "More vectors then ~D" count)
+  (loop for vector in vectors
+     for i from 0
+     do (setf (get-array gl-array i components) vector)))
 
 
 
