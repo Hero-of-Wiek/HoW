@@ -1,14 +1,19 @@
 (in-package :how)
 
-(defvar +root-directory+
-  (asdf:system-relative-pathname (asdf:find-system :how) "/")
-  "The root of where the asdf source is at.
+(eval-when (:compile-toplevel :load-toplevel)
+  (defparameter +root-directory+
+    (make-pathname :directory
+                   (pathname-directory
+                    (load-time-value
+                     (or #.*compile-file-truename*
+                         *load-truename*))))
+    "The root of the HoW game directory.
 
 We use this for locating data and configuration information for HoW. This
 may run into some issues in the future but for the near term future this
-solves most issues.")
+solves most issues."))
 
-(defvar +image-directory+
+(defparameter +image-directory+
   (merge-pathnames #P"images/" +root-directory+))
 
 (defvar *game-frame-size-x* 640
