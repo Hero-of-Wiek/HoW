@@ -85,6 +85,10 @@
         (gl:glaref gl-vector index 'y) (aref vector 1)
         (gl:glaref gl-vector index 'z) (aref vector 2)))
 
+(defun getverts (gl-array &optional (count (gl::gl-array-size gl-array)))
+  (loop for i from 0 to (1- count)
+     collect (getvert gl-array i)))
+
 
 
 (defun parse-points (string)
