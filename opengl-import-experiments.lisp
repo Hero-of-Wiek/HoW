@@ -67,6 +67,13 @@
   (loop for i from 0 to (1- count)
      collect (getvert gl-array i)))
 
+(defun (setf getverts) (vectors gl-array
+                        &optional (count (gl::gl-array-size gl-array)))
+  (assert (<= (length vectors) count) () "More vectors then ~D" count)
+  (loop for vector in vectors
+     for i from 0
+     do (setf (getvert gl-array i) vector)))
+
 
 
 (defun parse-points (string)
