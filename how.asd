@@ -1,5 +1,6 @@
 (asdf:defsystem :how
-  :depends-on (:lispbuilder-sdl :nutils :cl-opengl :cl-glu)
+  :depends-on (:lispbuilder-sdl :nutils :cl-opengl :cl-glu
+                                :cxml-dom :cxml)
   :components
   ((:file "packages")
    (:file "init" :depends-on ("packages"))
