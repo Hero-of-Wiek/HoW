@@ -1,13 +1,7 @@
 (defpackage #:how.opengl-import
-  (:use :cl)
-  (:import-from :how.3d-experiments #:render-cube))
+  (:use :cl))
 
 (in-package :how.opengl-import)
-
-(defun render-thing (points)
-  "Renders POINTS as a group of vertexes"
-  (gl:with-primitive :quads
-    (mapc (lambda (point) (apply #'cl-opengl:vertex point)) points)))
 
 (defun 3d-test-1 ()
   (sdl:with-init ()
