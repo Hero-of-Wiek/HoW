@@ -32,7 +32,7 @@
       (:idle ()
              (gl:clear :color-buffer-bit)
              (gl:color 1 1 1)
-             (gl:rotate 1 1 1 1)
+             ;;             (gl:rotate 1 1 1 1)
                                         ;(gl:polygon-mode :front-and-back :fill)
              (gl:polygon-mode :front-and-back :fill)
              (gl:enable-client-state :vertex-array)
@@ -42,16 +42,24 @@
 
 (defun draw-thing ()
   (with-gl-array-values (arr 'vertex '(x y z))
-      '(#(10 10 -10) #(5 15 5) #(-20 0 0) #(10 -12 10))
+      '(#(5.0 5.0 -5.0) #(5.0 -5.0 -5.0)
+        #(-5.0 -5.0 -5.0) #(-5.0 5.0 -5.0)
+        #(5.0 5.0 5.0) #(5.0 -5.0 5.0)
+        #(-5.0 -5.0 5.0) #(-5.0 5.0 5.0))
     (gl:bind-gl-vertex-array arr)
-    (with-gl-array-values (arr :unsigned-int) '(0 1 1 3 2 0)
+    (gl:rotate 1 1 1 3)
+    (gl:polygon-mode :front-and-back :line)
+    (with-gl-array-values (arr :unsigned-int)
+        '(0 1 2 3 4 7 6 5 0 4 5 1 1 5 6 2 2 6 7 3 4 0 3 7)
       (gl:draw-elements :polygon arr))))
 
 (gl:define-gl-array-format vertex
-  (gl:vertex :type :int :components (x y z)))
+  (gl:vertex :type :float :components (x y z)))
 
 (defmacro with-gl-array-values ((var type &optional components count) values
                                 &body body)
+  ;; Might want to make it so component types can nest:
+  ;; (x y z (w v x)) or whatever
   (nutils:once-only (values)
     `(gl:with-gl-array (,var ,type :count (or ,count (length ,values)))
        (setf (get-arrays arr ,components) ,values)
@@ -86,11 +94,6 @@ Vectors are: ~A" count vectors)
   (loop for vector in vectors
      for i from 0
      do (setf (get-array gl-array i components) vector)))
-
-(defun sf-bool-p (input)
-  "True if INPUT contains true or false as a string."
-  (when (stringp input)
-    (member input '("True" "False" "") :test #'equalp)))
 
 (defun parse-sf-bool (string)
   (declare (string string))
