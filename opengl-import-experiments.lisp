@@ -60,18 +60,6 @@
        ;;(gl:bind-gl-vertex-array ,var)
        ,@body)))
 
-(defun getvert (gl-vector &optional (index 0))
-  "Gets an cl-opengl vertex."
-  (declare (nutils:non-negative-fixnum index))
-  (vector (gl:glaref gl-vector index 'x)
-          (gl:glaref gl-vector index 'y)
-          (gl:glaref gl-vector index 'z)))
-
-(defun (setf getvert) (vector gl-vector &optional (index 0))
-  (setf (gl:glaref gl-vector index 'x) (aref vector 0)
-        (gl:glaref gl-vector index 'y) (aref vector 1)
-        (gl:glaref gl-vector index 'z) (aref vector 2)))
-
 (defun get-array (gl-vector &optional (index 0) components)
   (if components
       (apply #'vector
@@ -87,21 +75,9 @@
          do (setf (gl:glaref gl-vector index component) element))
       (setf (gl:glaref gl-vector index) item)))
 
-(defun getverts (gl-array &optional (count (gl::gl-array-size gl-array)))
-  (loop for i from 0 to (1- count)
-     collect (getvert gl-array i)))
-
 (defun get-arrays (gl-array &optional components (count (gl::gl-array-size gl-array)))
   (loop for i from 0 to (1- count)
        collect (get-array gl-array i components)))
-
-(defun (setf getverts) (vectors gl-array
-                        &optional (count (gl::gl-array-size gl-array)))
-  (assert (<= (length vectors) count) () "More vectors then ~D
-Vectors are: ~A" count vectors)
-  (loop for vector in vectors
-     for i from 0
-     do (setf (getvert gl-array i) vector)))
 
 (defun (setf get-arrays) (vectors gl-array
                           &optional components (count (gl::gl-array-size gl-array)))
