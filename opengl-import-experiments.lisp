@@ -50,6 +50,15 @@
 (gl:define-gl-array-format vertex
   (gl:vertex :type :int :components (x y z)))
 
+(defmacro with-gl-array-values ((var type &optional components count) values
+                                &body body)
+  (nutils:once-only (values)
+    `(gl:with-gl-array (,var ,type :count (or ,count (length ,values)))
+       (setf (get-arrays arr ,components) ,values)
+       ;; Might want to have something that lets us bind stuff
+       ;;automatically in teh arglists, but not a top priority.
+       ;;(gl:bind-gl-vertex-array ,var)
+       ,@body)))
 
 (defun getvert (gl-vector &optional (index 0))
   "Gets an cl-opengl vertex."
@@ -88,18 +97,29 @@
 
 (defun (setf getverts) (vectors gl-array
                         &optional (count (gl::gl-array-size gl-array)))
-  (assert (<= (length vectors) count) () "More vectors then ~D" count)
+  (assert (<= (length vectors) count) () "More vectors then ~D
+Vectors are: ~A" count vectors)
   (loop for vector in vectors
      for i from 0
      do (setf (getvert gl-array i) vector)))
 
 (defun (setf get-arrays) (vectors gl-array
                           &optional components (count (gl::gl-array-size gl-array)))
-  (assert (<= (length vectors) count) () "More vectors then ~D" count)
+    (assert (<= (length vectors) count) () "More vectors then ~D
+Vectors are: ~A" count vectors)
   (loop for vector in vectors
      for i from 0
      do (setf (get-array gl-array i components) vector)))
 
+(defun sf-bool-p (input)
+  "True if INPUT contains true or false as a string."
+  (when (stringp input)
+    (member input '("True" "False" "") :test #'equalp)))
+
+(defun parse-sf-bool (string)
+  (declare (string string))
+  (check-type string (satisfies sf-bool-p))
+  (equalp "True" string))
 
 
 (defun parse-points (string)
