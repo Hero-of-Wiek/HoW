@@ -5,15 +5,15 @@
 
 (defun 3d-test-1 ()
   (sdl:with-init ()
-    (sdl:window 800 600
+    (sdl:window 500 400
                 :title-caption "OpenGL Example"
                 :icon-caption "OpenGL Example"
                 :opengl t
                 :opengl-attributes '((:SDL-GL-DOUBLEBUFFER 1)))
-    (gl:viewport 0 0 800 600)
+    (gl:viewport 0 0 500 400)
     (gl:matrix-mode :projection)
     (gl:load-identity)
-    (glu:perspective 45.0 (/ 800 600) 1.0 500.0)
+    (glu:perspective 45.0 (/ 500 400) 1.0 500.0)
     (gl:matrix-mode :modelview)
     (gl:load-identity)
     (gl:clear-color 0 0 0 0)
@@ -35,17 +35,17 @@
              (sdl:update-display)))))
 
 (defun draw-thing ()
-  (with-gl-array-values (arr 'vertex '(x y z))
+  (with-gl-array-values (arr1 'vertex '(x y z))
       '(#(5.0 5.0 -5.0) #(5.0 -5.0 -5.0)
         #(-5.0 -5.0 -5.0) #(-5.0 5.0 -5.0)
         #(5.0 5.0 5.0) #(5.0 -5.0 5.0)
         #(-5.0 -5.0 5.0) #(-5.0 5.0 5.0))
-    (gl:bind-gl-vertex-array arr)
+    (gl:bind-gl-vertex-array arr1)
     (gl:rotate 1 1 1 3)
     (gl:polygon-mode :front-and-back :line)
-    (with-gl-array-values (arr :unsigned-int)
+    (with-gl-array-values (arr2 :unsigned-int)
         '(0 1 2 3 4 7 6 5 0 4 5 1 1 5 6 2 2 6 7 3 4 0 3 7)
-      (gl:draw-elements :polygon arr))))
+      (gl:draw-elements :polygon arr2))))
 
 (gl:define-gl-array-format vertex
   (gl:vertex :type :float :components (x y z)))
@@ -56,7 +56,7 @@
   ;; (x y z (w v x)) or whatever
   (nutils:once-only (values)
     `(gl:with-gl-array (,var ,type :count (or ,count (length ,values)))
-       (setf (get-arrays arr ,components) ,values)
+       (setf (get-arrays ,var ,components) ,values)
        ;; Might want to have something that lets us bind stuff
        ;;automatically in teh arglists, but not a top priority.
        ;;(gl:bind-gl-vertex-array ,var)
