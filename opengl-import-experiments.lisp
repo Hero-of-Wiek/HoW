@@ -4,12 +4,14 @@
 (in-package :how.opengl-import)
 
 (defun 3d-test-1 ()
+  (let ((old-y 0) (view-x 0) (view-y 0) (trans-z -60))
   (sdl:with-init ()
     (sdl:window 500 400
                 :title-caption "OpenGL Example"
                 :icon-caption "OpenGL Example"
                 :opengl t
                 :opengl-attributes '((:SDL-GL-DOUBLEBUFFER 1)))
+    (sdl:enable-key-repeat nil nil)
     (gl:viewport 0 0 500 400)
     (gl:matrix-mode :projection)
     (gl:load-identity)
@@ -17,22 +19,40 @@
     (gl:matrix-mode :modelview)
     (gl:load-identity)
     (gl:clear-color 0 0 0 0)
-    (gl:translate 3 2 -60)
+    (gl:translate 0 0 -60)
     (sdl:with-events ()
       (:quit-event ()
                    t)
+      (:key-repeat-on t)
       (:key-down-event (:key key)
-                       (when (sdl:key= key :sdl-key-escape) (sdl:push-quit-event)))
+                       (when (sdl:key= key :sdl-key-escape)
+			 (sdl:push-quit-event))
+		       (when (sdl:key= key :sdl-key-down)
+			 (setf view-y (decf view-y)))
+		       (when (sdl:key= key :sdl-key-up)
+			 (setf view-y (incf view-y))))
+      (:mouse-motion-event (:x x :y y)
+			   (setf view-x (- x 230))
+			   (if (> y old-y)
+			       (gl:translate 0 0 1)
+			       (gl:translate 0 0 -1))
+			   (setf old-y y))
       (:idle ()
+	     (gl:viewport view-x view-y 500 400)
              (gl:clear :color-buffer-bit)
              (gl:color 1 1 1)
-             ;;             (gl:rotate 1 1 1 1)
-                                        ;(gl:polygon-mode :front-and-back :fill)
              (gl:polygon-mode :front-and-back :fill)
              (gl:enable-client-state :vertex-array)
              (draw-thing)
              (gl:flush)
-             (sdl:update-display)))))
+             (sdl:update-display))))))
+
+(defun normalize (vector)
+  (let ((d (sqrt (apply #'+ (loop for i across vector
+			       collect (* i i))))))
+    (apply #'vector (loop for i across vector
+			 collect (float (/ i d))))))
+
 
 (defun draw-thing ()
   (with-gl-array-values (arr1 'vertex '(x y z))
