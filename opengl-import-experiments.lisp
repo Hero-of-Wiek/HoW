@@ -3,6 +3,9 @@
 
 (in-package :how.opengl-import)
 
+(gl:define-gl-array-format vertex
+  (gl:vertex :type :float :components (x y z)))
+
 (defvar *screen-height* 400)
 (defvar *screen-width* 500)
 
@@ -68,7 +71,7 @@
 			   (gl:viewport (- x 500) (+ (- y))
 					(* *screen-width* 2)
 					(* *screen-height* 2)))
-			;   (gl:translate (float (/ x-rel 20)) real buggy
+			;   (gl:translate (float (/ x-rel 20)) ;real buggy
 			;		 (float (/ y-rel 20)) 0))
       (:mouse-button-down-event (:button button)
 			 	(when (= button sdl:sdl-button-wheel-up)
@@ -98,7 +101,7 @@
         #(5.0 5.0 5.0) #(5.0 -5.0 5.0)
         #(-5.0 -5.0 5.0) #(-5.0 5.0 5.0))
     (gl:bind-gl-vertex-array arr1)
-    ;gl:rotate 1 1 1 3)
+    ;(gl:rotate 1 1 1 3)
     (gl:polygon-mode :front-and-back :line)
     (gl:with-gl-array-values (arr2 :unsigned-int)
         '(0 1 2 3 4 7 6 5 0 4 5 1 1 5 6 2 2 6 7 3 4 0 3 7)
