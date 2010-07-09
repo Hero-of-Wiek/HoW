@@ -18,4 +18,5 @@ def export_to_lisp(filepath):
 		for vert in face.v:
 			out.write( '%i' % (vert.index + 1))
 		out.write(')\n')
+	out.write("))")
 	out.close()
