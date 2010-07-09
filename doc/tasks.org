@@ -1,5 +1,13 @@
 * Tasks.org
-** TODO make frameset tools
-** TODO make magenta(or any other color we decide to use) a "alpha" effect(make it go *POOF*)
-** TODO figure out how to make sprites translucent (ie for taken-away hearts)
-** TODO learn blender3d =P
+** DONE make magenta(or any other color we decide to use) a "alpha" effect(make it go *POOF*)
+   CLOSED: [2010-07-09 Fri 21:05]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2010-07-09 Fri 21:05]
+   :END:
+** DONE learn blender3d =P
+   CLOSED: [2010-07-09 Fri 21:05]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2010-07-09 Fri 21:06]
+   :END:
+
+   Flare and nix have this.
