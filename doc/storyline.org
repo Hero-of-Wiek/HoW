@@ -19,9 +19,15 @@ DO NOT READ IF YOU ARE AN END USER IT SPOILS THE GAME
 *** TODO Family background
 
 *** Initial timeline
-    Hero (aged 8 to 10) starts out with no weapons at all, is forced to
-    use whatever is handy. His first battles are against a trainer who is
-    a village elder. Player learns how to interact with environment
+    1) start with no weapons in home village
+    2) first battles is against a trainer
+       1) player is meant to interact with the environment
+    3) Maybe do a simple mission like apprehend a robber
+       1) Possibly make this guy the ultimate antagonist?
+
+
+*** Later timeline
+    - Sister gets captured, hero tries to save her and fails.
 
 * Weapons
   - Use sticks/stones/other parts of the environment
@@ -31,9 +37,15 @@ DO NOT READ IF YOU ARE AN END USER IT SPOILS THE GAME
 *** More general...
     We have a concept of:
     - Hand to hand fighting
-    - close in weapons like swords/nunchucks (sp?)
+    - close in weapons like swords/nunchucks
     - ranged weapons like slingshot/rocks/bow-arrow/stars
     - artillery?
+    - bombs
+    - traps
+
+* puzzles
+  We want to work in some sort of puzzles and things to make player think
+  some.
 
 * Characters
   - Wiek :: is the "Kingdom".
@@ -45,4 +57,14 @@ DO NOT READ IF YOU ARE AN END USER IT SPOILS THE GAME
   - namehere :: sister1
   - namehere :: sister2
   - namehere :: older brother (dies during a war)
+  - namehere :: robber (start of game, first "mission")
 
+
+* Races or groups of people
+  - Initial village
+
+
+* Ideas / general concept possibilities
+  - hero leads for a short time some sort of army of followers.
+  - Hero enters various dungeons.
+  - antagonist controls someone else to trick the player.
