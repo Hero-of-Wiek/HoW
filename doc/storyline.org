@@ -1,7 +1,48 @@
-* DO NOT READ IF YOU ARE AN END USER IT SPOILS THE GAME
+DO NOT READ IF YOU ARE AN END USER IT SPOILS THE GAME
+
 * Setting
   In the kingdom of Wiek, split into 5 regions in the point of a
-  star. There are other regions around it. The time period is unknown,
-  but their technology is around the 14th century's technology. The
-  main village(unnamed as of now) is in the bottom left region, nearly
-  in the middle of the 1 big start, yet still in the bottom left point.
+  star. There are other regions around it. The time period is unknown, but
+  their technology is around the 14th century's technology. The main
+  village(unnamed as of now) is in the bottom left region, nearly in the
+  middle of the 1 big start, yet still in the bottom left point.
+
+*** Hero background
+    Hero is roughly 8 to 10 years old at the start of the game. Game will
+    employ a timewarp mechanism to get the player to a more sensible age
+    for parts of the game.
+
+*** Village background
+    Village hero grows up in has a tradition of martial arts and starts
+    showing their children to fight around age 8 to 10.
+
+*** TODO Family background
+
+*** Initial timeline
+    Hero (aged 8 to 10) starts out with no weapons at all, is forced to
+    use whatever is handy. His first battles are against a trainer who is
+    a village elder. Player learns how to interact with environment
+
+* Weapons
+  - Use sticks/stones/other parts of the environment
+  - slingshot
+  - wood sword from father
+
+*** More general...
+    We have a concept of:
+    - Hand to hand fighting
+    - close in weapons like swords/nunchucks (sp?)
+    - ranged weapons like slingshot/rocks/bow-arrow/stars
+    - artillery?
+
+* Characters
+  - Wiek :: is the "Kingdom".
+  - Igoru :: is the hero.
+  - Irisi :: is the princess.
+  - namehere :: first trainer/village elder
+  - namehere :: father
+  - namehere :: mother
+  - namehere :: sister1
+  - namehere :: sister2
+  - namehere :: older brother (dies during a war)
+
