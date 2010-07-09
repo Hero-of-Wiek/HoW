@@ -16,7 +16,7 @@ def export_to_lisp(filepath):
 	for face in mesh.faces:
 		out.write('(')
 		for vert in face.v:
-			out.write( '%i' % (vert.index + 1))
+			out.write( '%i ' % (vert.index + 1))
 		out.write(')\n')
 	out.write("))")
 	out.close()
