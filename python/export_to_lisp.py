@@ -3,6 +3,7 @@ import Blender
 import bpy
 
 def export_to_lisp(filepath):
+	"' You must use this with blender '"
     	out = file(filepath, 'w')
 	sce = bpy.data.scenes.active
 	ob = sce.objects.active
