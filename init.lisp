@@ -16,6 +16,9 @@ solves most issues."))
 (defparameter +image-directory+
   (merge-pathnames #P"images/" +root-directory+))
 
+(defparameter +model-directory+
+  (merge-pathnames #P"models/" +root-directory+))
+
 (defvar *game-frame-size-x* 640
   "X direction for the game's frame.")
 (defvar *game-frame-size-y* 480

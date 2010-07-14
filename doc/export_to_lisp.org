@@ -1,6 +1,6 @@
 * Exporting Blender models to Lisp
   1. Open scripts/export_to_lisp.py and change the Version to you're
-     Blender version without the period.
+     Blender version without the period(compatible with only 2.4x versions).
   2. Link it to ~/.blender/scripts/
   3. When pulling, if it errors, change the Version back to 249, pull,
      then reapeat step 1
