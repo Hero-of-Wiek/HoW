@@ -12,3 +12,10 @@
 (defpackage #:how.health
   (:use :cl)
   (:export #:health))
+
+(defpackage #:cl-mdl
+  (:use :cl)
+  (:export #:load-model
+           #:draw-model-at-*
+	   #:draw-model-at
+	   #:draw-model))
